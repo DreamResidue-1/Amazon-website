@@ -6,7 +6,12 @@ async function Products() {
   products = data;
   
   document.querySelector('.js-products-grid').innerHTML = products.map(element => generateHtml(element)).join("");
-  
+ 
+  document.querySelectorAll('.limit-text-to-2-lines').forEach(par => {
+    par.addEventListener('click', event => {
+      event.target.classList.toggle('clicked');
+    })
+})
 }
 
 document.addEventListener("DOMContentLoaded", Products);
@@ -20,7 +25,7 @@ function generateHtml(element) {
               src="${element.image}">
           </div>
 
-          <div class="product-name limit-text-to-2-lines">
+          <div class="product-name limit-text-to-2-lines js-limit-text-to-2-lines">
             ${element.name}
           </div>
 
@@ -63,3 +68,4 @@ function generateHtml(element) {
           </button>
         </div>`
 }
+
