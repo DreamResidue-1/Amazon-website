@@ -1,5 +1,7 @@
 import { addToCart, counter} from "../data/cart.js";
 import {generateHtml} from "./util/generateHtml.js";
+import {searchBar,searchBtn} from "./util/searchBar.js";
+
 
 let products = [];
 async function Products() {
@@ -42,31 +44,5 @@ document.querySelector('.js-products-grid').addEventListener('click', (event) =>
   }
 });
 
-
-document.querySelector('input.search-bar').addEventListener('keydown', event =>{
-  if(event.key === 'Enter'){
-    let value = event.target.value;
-    if(!value.trim()){
-
-      let popUp = document.querySelector('.search-bar-conainer .pop-up');
-      popUp.innerHTML = 'Invalid input';
-      popUp.style.opacity = '1';
-      setTimeout(() => {
-        popUp.style.opacity = '0';
-      }, 2000);
-
-    }else{
-      
-     search(value)
-
-    }
-  }
-})
-
-
-function search(q){
- 
-  
-  location.href = `search.html?word=${q}`;
-
-}
+searchBar();
+searchBtn();
