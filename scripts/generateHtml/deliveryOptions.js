@@ -14,11 +14,17 @@ export function getDeliveryDate(daysToAdd) {
   deliveryDate.setDate(today.getDate() + daysToAdd);
 
   // Format the date to "Weekday, Month Day"
-  return deliveryDate.toLocaleDateString('en-US', {
+
+  const DeliveryDate  = deliveryDate.toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
     day: 'numeric'
   });
+  if(DeliveryDate.toUpperCase().includes('FRIDAY')){
+    return getDeliveryDate(daysToAdd+1);
+  }else{
+    return DeliveryDate;
+  }
 }
 
 

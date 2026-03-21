@@ -1,4 +1,4 @@
-import { addToCart, counter} from "../data/cart.js";
+import {addToCart, counter} from "../data/cart.js";
 import {generateHtmlProduct} from "./generateHtml/product.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
 
@@ -36,9 +36,9 @@ document.querySelector('.js-products-grid').addEventListener('click', (event) =>
     clearTimeout(clearSetTimeOut);
 
     clearSetTimeOut = setTimeout(() =>{
-      document.querySelector('.added'+id).style.opacity = '0'
+    document.querySelector('.added'+id).style.visibility = 'hidden'
     },2000)
-      document.querySelector('.added'+id).style.opacity = '1'
+    document.querySelector('.added'+id).style.visibility = 'visible'
 
     addToCart(id,quantity);
   

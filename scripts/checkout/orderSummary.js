@@ -20,7 +20,6 @@ orderSummary.addEventListener('click', event => {
     if(targeted.closest('.js-delete-quantity-link')){
     let productId = targeted.dataset.productId;
     cart.deleteFromCart(productId);
-    document.querySelector(`.js-cart-item-container-${productId}`).remove();
     renderPaymentSummary();
     renderOrderSummary(); 
     }
