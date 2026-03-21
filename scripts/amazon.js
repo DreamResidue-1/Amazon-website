@@ -1,5 +1,5 @@
 import { addToCart, counter} from "../data/cart.js";
-import {generateHtml} from "./util/generateHtml.js";
+import {generateHtmlProduct} from "./generateHtml/product.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
 
 
@@ -10,7 +10,7 @@ async function Products() {
     
   products = data;
   
-  document.querySelector('.js-products-grid').innerHTML = products.map(element => generateHtml(element)).join("");
+  document.querySelector('.js-products-grid').innerHTML = products.map(element => generateHtmlProduct(element)).join("");
  
   document.querySelectorAll('.limit-text-to-2-lines').forEach(par => {
     par.addEventListener('click', event => {
@@ -23,7 +23,7 @@ async function Products() {
 }
 
 document.addEventListener("DOMContentLoaded", Products);
-
+let clearSetTimeOut ;
 // This can stay outside the function
 document.querySelector('.js-products-grid').addEventListener('click', (event) => {
   // Check if the clicked element (or its parent) is the button
@@ -33,7 +33,9 @@ document.querySelector('.js-products-grid').addEventListener('click', (event) =>
 
     let id = button.dataset.id;
     let quantity = +document.querySelector(`.select${id}`).value
-    setTimeout(() =>{
+    clearTimeout(clearSetTimeOut);
+
+    clearSetTimeOut = setTimeout(() =>{
       document.querySelector('.added'+id).style.opacity = '0'
     },2000)
       document.querySelector('.added'+id).style.opacity = '1'

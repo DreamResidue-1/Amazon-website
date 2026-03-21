@@ -1,5 +1,7 @@
-export const cart = JSON.parse(localStorage.getItem('cart')) || [];
-console.log(cart)
+import { deliveryOptions  } from "./deliveryOptions.js";
+
+export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
 
 function saveProduct(){
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -10,12 +12,16 @@ export function addToCart(id, quantity){
   if(product){
     product.quantity+=quantity;
   }else {
-    cart.push({id,quantity});
+    cart.push({id,quantity,deliveryOptionId:1});
   }
   saveProduct();
-
 }
 
+export function deleteFromCart(id){
+    let newCart = cart.filter(cartItem => cartItem.id !== id);
+    cart = newCart;
+    saveProduct();
+}
 export function counter() {
   let count = 0;
   cart.forEach(product => {
@@ -24,3 +30,14 @@ export function counter() {
   return count;
 }
 
+export function updateFromCart(id, quantity) {
+  let mattingItem = cart.find(cartItem => cartItem.id == id);
+  mattingItem.quantity = quantity;
+  saveProduct();
+}
+
+export function updateDeliveryOption(productId,deliveryOptionId){
+  let matchingItem  = cart.find(cartItem => cartItem.id === productId)
+  matchingItem.deliveryOptionId =  deliveryOptionId;
+  saveProduct();
+}

@@ -1,5 +1,6 @@
+import * as money from "../util/money.js";
 
-export function generateHtml(element) {
+export function generateHtmlProduct(element) {
   return `
       <div class="product-container">
           <div class="product-image-container">
@@ -20,7 +21,7 @@ export function generateHtml(element) {
           </div>
 
           <div class="product-price">
-            $${(element.priceCents/100).toFixed(2)}
+            ${money.formatCurrency(element.priceCents)}
           </div>
 
           <div class="product-quantity-container">
@@ -51,4 +52,4 @@ export function generateHtml(element) {
         </div>`
 }
 
-export default generateHtml;
+export default generateHtmlProduct;
