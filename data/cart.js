@@ -1,6 +1,11 @@
 import { deliveryOptions  } from "./deliveryOptions.js";
 
-export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+export let cart;
+loadFromStorage();
+
+export function loadFromStorage(){
+  cart = JSON.parse(localStorage.getItem('cart')) || [];
+}
 
 
 function saveProduct(){
