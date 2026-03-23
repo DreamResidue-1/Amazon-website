@@ -4,7 +4,7 @@ import { renderPaymentSummary } from './paymentSummary.js';
 
 const orderSummary = document.querySelector('.js-order-summary');
 export function renderOrderSummary() {
-
+  cart.loadFromStorage();
   orderSummary.innerHTML = 
   cart.cart.map(order => {
     return generateHtmlCartItem(order);
@@ -39,7 +39,7 @@ orderSummary.addEventListener('click', event => {
       productQuantity.classList.add('active-save');      
     }else{
       productQuantity.classList.remove('active-save');
-      currentQuantity.textContent = !input.value ? '1' : input.value;
+      currentQuantity.textContent = !input.value || input.value < 1 ? '1' : input.value;
       cart.updateFromCart(productId,+currentQuantity.textContent);
       renderPaymentSummary();
       renderOrderSummary(); 

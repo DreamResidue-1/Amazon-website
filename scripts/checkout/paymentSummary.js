@@ -6,7 +6,6 @@ import { generateHtmlPaymentSummary } from '../generateHtml/paymentSummary.js';
 
 export function renderPaymentSummary(){
  
- ;
   
  let paymentSummaryMoney = 0;
  let shippingMoney = 0;
