@@ -1,6 +1,7 @@
 import {counter } from '../data/cart.js';
 import {generateHtmlProduct} from './generateHtml/product.js';
 import {searchBar,searchBtn} from "./util/searchBar.js";
+import {products} from '../data/products.js'
 
 
 const url = new URL(location.href);
@@ -12,13 +13,12 @@ console.log(word);
 
 let grid = document.querySelector('.js-products-grid');
 
-let products = [];
+
 async function Products() {
-  const response = await fetch('../backend/products.json');
-  const data = await response.json();
+  // const response = await fetch('../backend/products.json');
+  // const data = await response.json();
     
   let newProducts = []
-  products = data;
   newProducts =  products.filter(element => {
     
     if(element.name.toUpperCase()?.includes(word.toUpperCase()) )
