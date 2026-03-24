@@ -52,7 +52,7 @@ async function Products() {
     grid.innerHTML = `
     <div style="margin:auto; position:absolute; top:50%; left:50%; transform:translate(-50%); white-space:nowrap; text-align:center;"
     >There is no product matches the ${word}
-    <a style="color:red" href="amazon.html">back</a>
+    <a style="color:red" href="index.html">back</a>
     </div>
     `
   }
