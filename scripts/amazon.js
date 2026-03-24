@@ -1,8 +1,9 @@
 import {addToCart, counter} from "../data/cart.js";
-import {products} from '../data/products.js'
+import {products,loadProducts} from '../data/products.js'
 import {generateHtmlProduct} from "./generateHtml/product.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
 
+loadProducts(Products);
 let  productCollection = [];
 
 async function Products() {

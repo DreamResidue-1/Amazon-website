@@ -55,6 +55,30 @@ class Appliance extends Product{
     
   }
 }
+
+export let products = [];
+
+export function loadProducts(fun){
+ 
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', () =>{
+    console.log(xhr.response);
+    products = JSON.parse(xhr.response).map((product)=>{ 
+      if(product.type === 'clothing')
+        return new Clothing(product)
+      else if (product.type === 'appliances')
+        return new Appliance(product)
+      else
+        return new Product(product)
+    });
+    fun();
+    console.log('load products');
+  })
+
+  xhr.open('GET', '../backend/products.json');
+  xhr.send();
+}
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -744,6 +768,6 @@ export const products = [
 //     )
 //   });
 // }
-
+*/
 
 export default products;

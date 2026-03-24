@@ -1,14 +1,15 @@
 import * as cart from '../../data/cart.js';
-import { formatCurrency } from '../util/money.js';
 import products from '../../data/products.js';
 import deliveryOptions from '../../data/deliveryOptions.js';
 import { generateHtmlPaymentSummary } from '../generateHtml/paymentSummary.js';
 
+const paymentSummary =  document.querySelector('.js-payment-summary')
 export function renderPaymentSummary(){
  
   
  let paymentSummaryMoney = 0;
  let shippingMoney = 0;
+ 
  cart.cart.forEach(element => {
    const quantity =  element.quantity;
    const matchingItem = products.find(p => p.id === element.id);
@@ -23,7 +24,7 @@ export function renderPaymentSummary(){
   const totalTax = beforeTax * 0.1;
   
   const total = beforeTax + totalTax;
-     document.querySelector('.js-payment-summary').innerHTML = generateHtmlPaymentSummary( {
+     paymentSummary.innerHTML = generateHtmlPaymentSummary( {
      itemsNumber:   cart.counter(),
      paymentSummaryMoney, 
      shippingMoney, 
