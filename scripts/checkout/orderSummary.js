@@ -11,10 +11,10 @@ export function renderOrderSummary() {
   }).join('');
   
   renderPaymentSummary();
-  
   returnToHomeLink();
 }
 
+if(orderSummary)
 orderSummary.addEventListener('click', event => {
     const targeted = event.target;
     if(targeted.closest('.js-delete-quantity-link')){

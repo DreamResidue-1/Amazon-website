@@ -1,16 +1,18 @@
 import {addToCart, counter} from "../data/cart.js";
+import {products} from '../data/products.js'
 import {generateHtmlProduct} from "./generateHtml/product.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
 
+let  productCollection = [];
 
-let products = [];
 async function Products() {
-  const response = await fetch('../backend/products.json');
-  const data = await response.json();
+
     
-  products = data;
+ 
+  productCollection = products;
   
-  document.querySelector('.js-products-grid').innerHTML = products.map(element => generateHtmlProduct(element)).join("");
+  document.querySelector('.js-products-grid').innerHTML =
+  productCollection.map(element => generateHtmlProduct(element)).join("");
  
   document.querySelectorAll('.limit-text-to-2-lines').forEach(par => {
     par.addEventListener('click', event => {

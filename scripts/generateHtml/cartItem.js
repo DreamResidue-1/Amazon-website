@@ -1,10 +1,9 @@
 
-import * as money from '../util/money.js'
+
 import products from '../../data/products.js';
 import {generateHtmlDeliveryOption} from './deliveryOptions.js';
 import deliveryOptions from '../../data/deliveryOptions.js';
 import { getDeliveryDate } from './deliveryOptions.js';
-
 
 export function generateHtmlCartItem(order) {
   let matchingItem = products.find(e => e.id === order.id);
@@ -24,7 +23,7 @@ export function generateHtmlCartItem(order) {
             ${matchingItem.name}
           </div>
           <div class="product-price">
-            ${money.formatCurrency(matchingItem.priceCents)}
+            ${matchingItem.getPrice()}
           </div>
           <div class="product-quantity js-product-quantity" data-product-id=${matchingItem.id}>
             <span>

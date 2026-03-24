@@ -1,4 +1,3 @@
-import * as money from "../util/money.js";
 
 export function generateHtmlProduct(element) {
   return `
@@ -14,14 +13,14 @@ export function generateHtmlProduct(element) {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${element.rating.stars * 10}.png">
+              src="${element.getStarsUrl()}">
             <div class="product-rating-count link-primary">
               ${element.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            ${money.formatCurrency(element.priceCents)}
+            ${element.getPrice()}
           </div>
 
           <div class="product-quantity-container">
@@ -38,7 +37,7 @@ export function generateHtmlProduct(element) {
               <option value="10">10</option>
             </select>
           </div>
-
+              ${element.extraInfoHtml()}
           <div class="product-spacer"></div>
 
           <div class="added-to-cart added${element.id}" >

@@ -1,3 +1,60 @@
+import { renderOrderSummary } from "../scripts/checkout/orderSummary.js";
+import { formatCurrency } from "../scripts/util/money.js";
+
+export class Product {
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+  keywords;
+  constructor(productDetails){
+   this.id = productDetails.id;
+   this.name = productDetails.name ;
+   this.image = productDetails.image;
+   this.priceCents = productDetails.priceCents;
+   this.rating = productDetails.rating;
+   this.keywords = productDetails.keywords;
+  }
+
+  getStarsUrl(){
+    return `images/ratings/rating-${this.rating.stars * 10}.png`
+  }
+  getPrice(){
+    return `${formatCurrency(this.priceCents)}`
+  }
+  extraInfoHtml(){
+    return ''
+  }
+}
+
+class Clothing extends Product{
+  sizeChartLink;
+  constructor(productDetails){
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+  extraInfoHtml(){
+    return `<a href="${this.sizeChartLink}" target="_blank">Size chart</a>`;
+  }
+}
+
+
+class Appliance extends Product{
+  instractionsLink;
+  warrantyLink;
+  constructor(ProductDetails){
+    super(ProductDetails);
+    this.instractionsLink = ProductDetails.instractionsLink;
+    this.warrantyLink = ProductDetails.warrantyLink;
+
+  }
+  extraInfoHtml(){
+    return `<a href="${this.instractionsLink}" target="_blank">Instractions</a> 
+            <a href="${this.warrantyLink}" target="_blank">Warranty</a>`;
+    
+  }
+}
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -58,7 +115,10 @@ export const products = [
       "toaster",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type:'appliances',
+    instractionsLink: 'images/appliance-instractions.png',
+    warrantyLink: 'images/appliance-warranty.png'
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -243,7 +303,10 @@ export const products = [
       "water boiler",
       "appliances",
       "kitchen"
-    ]
+    ],
+    type:'appliances'
+    ,instractionsLink: 'images/appliance-instractions.png',
+     warrantyLink: 'images/appliance-warranty.png'
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -548,7 +611,10 @@ export const products = [
       "coffeemakers",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type: 'appliances'
+    ,instractionsLink: 'images/appliance-instractions.png',
+     warrantyLink: 'images/appliance-warranty.png'
   },
   {
     id: "02e3a47e-dd68-467e-9f71-8bf6f723fdae",
@@ -608,7 +674,10 @@ export const products = [
       "food blenders",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type:'appliances',
+    instractionsLink: 'images/appliance-instractions.png',
+    warrantyLink: 'images/appliance-warranty.png'
   },
   {
     id: "36c64692-677f-4f58-b5ec-0dc2cf109e27",
@@ -657,6 +726,24 @@ export const products = [
       "mens"
     ]
   }
-];
+].map((product)=>{
+  
+  if(product.type === 'clothing')
+    return new Clothing(product)
+  else if (product.type === 'appliances')
+    return new Appliance(product)
+  else
+    return new Product(product)
+});
+//  const response = await fetch('../backend/products.json');
+//   const data = await response.json();
+//  function ProductCollection(){
+//   return new Promise((resolve,reject) => {
+//     resolve(
+//         products
+//     )
+//   });
+// }
+
 
 export default products;
