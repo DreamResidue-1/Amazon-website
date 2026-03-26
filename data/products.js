@@ -56,28 +56,50 @@ class Appliance extends Product{
   }
 }
 
+export async function loadProductsFetch(){
+  products = await fetch('../backend/products.json')
+         .then(response => response.json())
+         .then(productsData => 
+          productsData.map((product)=>{            
+            if(product.type === 'clothing')
+              return new Clothing(product)
+            else if (product.type === 'appliances')
+              return new Appliance(product)
+            else
+              return new Product(product)
+          }))
+         .catch(() => console.log('Could not fetch Resorces'));
+  return products;
+  }
+
 export let products = [];
 
-export function loadProducts(fun){
+export async function loadProducts(callback){
  
-  const xhr = new XMLHttpRequest();
-  xhr.addEventListener('load', () =>{
-    console.log(xhr.response);
-    products = JSON.parse(xhr.response).map((product)=>{ 
-      if(product.type === 'clothing')
-        return new Clothing(product)
-      else if (product.type === 'appliances')
-        return new Appliance(product)
-      else
-        return new Product(product)
-    });
-    fun();
-    console.log('load products');
-  })
+         await loadProductsFetch();
+         callback();
+   
+//     xhr.addEventListener('load', () =>{
+//    const xhr = new XMLHttpRequest();
+//    console.log(xhr.response);
+//    products = JSON.parse(xhr.response).map((product)=>{ 
+//      if(product.type === 'clothing')
+//       return new Clothing(product)
+//     else if (product.type === 'appliances')
+//       return new Appliance(product)
+//     else
+//       return new Product(product)
+    
+//   });
+//   callback();
 
-  xhr.open('GET', '../backend/products.json');
-  xhr.send();
+//   console.log('load products');
+// })
+
+// xhr.open('GET', '../backend/products.json');
+// xhr.send();
 }
+
 /*
 export const products = [
   {

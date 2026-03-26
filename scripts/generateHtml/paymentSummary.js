@@ -31,8 +31,9 @@ export function generateHtmlPaymentSummary(payment){
             <div class="payment-summary-money">${formatCurrency(payment.total)}</div>
           </div>
 
-          <button class="place-order-button button-primary">
+          <button class="place-order-button  js-place-order-button button-primary">
             Place your order
           </button>
  `
 }
+

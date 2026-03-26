@@ -1,13 +1,16 @@
 
 
-import products from '../../data/products.js';
+
+import { products } from '../../data/products.js';
 import {generateHtmlDeliveryOption} from './deliveryOptions.js';
 import deliveryOptions from '../../data/deliveryOptions.js';
 import { getDeliveryDate } from './deliveryOptions.js';
+import { loadFromStorage } from '../../data/cart.js';
 
-export function generateHtmlCartItem(order) {
-  let matchingItem = products.find(e => e.id === order.id);
-  let option =  deliveryOptions.find( option => option.id == order.deliveryOptionId)
+
+export function generateHtmlCartItem(cartItem, matchingItem) {
+  loadFromStorage();
+  let option =  deliveryOptions.find( option => option.id == cartItem.deliveryOptionId)
   return `
     <div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingItem.id}">
       <div class="delivery-date">
@@ -27,7 +30,7 @@ export function generateHtmlCartItem(order) {
           </div>
           <div class="product-quantity js-product-quantity" data-product-id=${matchingItem.id}>
             <span>
-              Quantity: <span class="quantity-label js-quantity-label js-quantity-label-${matchingItem.id}">${order.quantity}</span>
+              Quantity: <span class="quantity-label js-quantity-label js-quantity-label-${matchingItem.id}">${cartItem.quantity}</span>
               <input type="number" class="update-input js-update-input-${matchingItem.id}">
             </span>
             <span class="update-quantity-link link-primary js-update-quantity-link" >

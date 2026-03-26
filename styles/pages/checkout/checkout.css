@@ -226,12 +226,22 @@
   padding-top: 18px;
 }
 
-.place-order-button {
+.place-order-button,.continue-shopping-button {
+  position: relative;
   width: 100%;
   padding-top: 12px;
+  display: block;
   padding-bottom: 12px;
   border-radius: 8px;
-
+  text-align: center;
   margin-top: 11px;
   margin-bottom: 15px;
+  text-decoration: none;
+  transition: text-decoration 0.5s ease-in;
 }
+.continue-shopping-button:hover{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+

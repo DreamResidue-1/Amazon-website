@@ -1,7 +1,8 @@
-import {counter } from '../data/cart.js';
+import {counterCart } from '../data/cart.js';
+import { products, loadProductsFetch } from '../data/products.js';
 import {generateHtmlProduct} from './generateHtml/product.js';
 import {searchBar,searchBtn} from "./util/searchBar.js";
-
+import { addToCart } from '../data/cart.js';
 
 const url = new URL(location.href);
 const word = url.searchParams.get('word');
@@ -12,19 +13,16 @@ console.log(word);
 
 let grid = document.querySelector('.js-products-grid');
 
-let products = [];
+
 async function Products() {
-  const response = await fetch('../backend/products.json');
-  const data = await response.json();
     
   let newProducts = []
-  products = data;
-  newProducts =  products.filter(element => {
-    
+  let productsCollection = await loadProductsFetch()
+  newProducts =  productsCollection.filter(element => {
     if(element.name.toUpperCase()?.includes(word.toUpperCase()) )
     return element.name.toUpperCase()?.includes(word.toUpperCase())
     else 
-   {
+     {
       {
       // 1. Normalize the search term to uppercase
       const searchWord = word.toUpperCase();
@@ -42,17 +40,16 @@ async function Products() {
   }
   );
   
-  document.querySelector('.cart-quantity').innerHTML = counter();
+  document.querySelector('.cart-quantity').innerHTML = counterCart();
   
   grid.innerHTML = '';
   grid.innerHTML =  newProducts.map(element => generateHtmlProduct(element)).join("");
 
-  
   if(grid.innerHTML === ''){
     grid.innerHTML = `
     <div style="margin:auto; position:absolute; top:50%; left:50%; transform:translate(-50%); white-space:nowrap; text-align:center;"
     >There is no product matches the ${word}
-    <a style="color:red" href="amazon.html">back</a>
+    <a style="color:red" href="index.html">back</a>
     </div>
     `
   }
@@ -62,7 +59,28 @@ async function Products() {
     })
 })
 }
+
+let clearSetTimeOut;
 document.addEventListener("DOMContentLoaded", Products);
+document.querySelector('.js-products-grid').addEventListener('click', (event) => {
+  // Check if the clicked element (or its parent) is the button
+  const button = event.target.closest('.js-add-to-cart-button');
+  
+  if (button) {
+
+    let id = button.dataset.id;
+    let quantity = +document.querySelector(`.select${id}`).value
+    clearTimeout(clearSetTimeOut);
+
+    clearSetTimeOut = setTimeout(() =>{
+    document.querySelector('.added'+id).style.visibility = 'hidden'
+    },2000)
+    document.querySelector('.added'+id).style.visibility = 'visible'
+
+    document.querySelector('.cart-quantity').innerHTML = counterCart(); 
+    addToCart(id,quantity);
+   }
+});
 
 
 searchBar();

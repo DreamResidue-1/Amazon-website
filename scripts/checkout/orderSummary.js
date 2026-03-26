@@ -1,13 +1,25 @@
 import * as cart from '../../data/cart.js';
+import { products , loadProductsFetch} from '../../data/products.js';
 import { generateHtmlCartItem } from '../generateHtml/cartItem.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
 const orderSummary = document.querySelector('.js-order-summary');
-export function renderOrderSummary() {
-  cart.loadFromStorage();
+export async function renderOrderSummary() {
+  if (cart.cart.length === 0) {
+    orderSummary.innerHTML = `
+    <p style='text-align:center; color:red'>You haven't placed any orders yet.</p>
+    <a href="index.html" class="continue-shopping-button button-primary">Continue Shopping</a>
+    `;
+    return;
+  }
+
+  await loadProductsFetch();
+  await cart.loadFromStorage();
+ 
   orderSummary.innerHTML = 
-  cart.cart.map(order => {
-    return generateHtmlCartItem(order);
+  cart.cart.map(cartItem => {
+    let matchingItem = products.find(e => e.id === cartItem.productId);
+    return generateHtmlCartItem(cartItem,matchingItem);
   }).join('');
   
   renderPaymentSummary();
@@ -31,6 +43,7 @@ orderSummary.addEventListener('click', event => {
     let input = document.querySelector('.js-update-input-'+productId);
     if(!productQuantity.classList.contains('active-save')){
       input.value = currentQuantity.textContent; 
+      //alert(productId)
       input.addEventListener("input", () => {
         // Base width of 50px + 8px per character
         const newWidth = 20 + (input.value.length * 8);
@@ -38,6 +51,7 @@ orderSummary.addEventListener('click', event => {
       });
       productQuantity.classList.add('active-save');      
     }else{
+      
       productQuantity.classList.remove('active-save');
       currentQuantity.textContent = !input.value || input.value < 1 ? '1' : input.value;
       cart.updateFromCart(productId,+currentQuantity.textContent);
@@ -50,11 +64,11 @@ orderSummary.addEventListener('click', event => {
       let deliveryOption = targeted.closest('.js-delivery-option');
       const {productId, deliveryOptionId} = deliveryOption.dataset;
       cart.updateDeliveryOption(productId,deliveryOptionId);
-      renderOrderSummary(); 
+      renderOrderSummary();
     }
   })
 
 function returnToHomeLink(){
-  let count = +cart.counter();
+  let count = +cart.counterCart();
   document.querySelector('.js-return-to-home-link').innerHTML = count > 1 ? `${count} items`: `${count} item`
 }

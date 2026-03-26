@@ -30,9 +30,21 @@ export function getDeliveryDate(daysToAdd) {
 
 export function generateHtmlDeliveryOption(deliveryOption, cartItem) {
   // Example: If the deliveryOption.id is '1' (which we'll assume is Free Shipping)
-  let matchingItem = cart.find(item => item.id === cartItem.id)
-  const isChecked = deliveryOption.id == matchingItem.deliveryOptionId?
-   'checked' : '';
+ 
+  let matchingItem = cart.find(item => item.productId === cartItem.id );
+  // cart.forEach(item => { 
+  //  if(item.productId === cartItem.id)
+  //  matchingItem = item;
+  // })
+  const isChecked = deliveryOption.id === Number(matchingItem.deliveryOptionId) ?
+  'checked' : '';
+
+   cart.forEach(item => {
+      console.log(item.productId);
+    })
+  console.log('dont we : ', cartItem)
+  console.log('this : ',matchingItem.deliveryOptionId)
+  console.log(deliveryOption.id , isChecked)
   const priceCents = deliveryOption.priceCents === 0 ? "Free ":
    formatCurrency(deliveryOption.priceCents) + ' -' ;
 

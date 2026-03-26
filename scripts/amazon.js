@@ -1,16 +1,16 @@
-import {addToCart, counter} from "../data/cart.js";
-import {products,loadProducts} from '../data/products.js'
+import {addToCart, counterCart} from "../data/cart.js";
+import {loadProductsFetch} from '../data/products.js'
 import {generateHtmlProduct} from "./generateHtml/product.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
 
-loadProducts(Products);
+
 let  productCollection = [];
 
 async function Products() {
 
     
  
-  productCollection = products;
+  productCollection = await loadProductsFetch();
   
   document.querySelector('.js-products-grid').innerHTML =
   productCollection.map(element => generateHtmlProduct(element)).join("");
@@ -20,12 +20,28 @@ async function Products() {
       event.target.classList.toggle('clicked');
     })
 
-       document.querySelector('.cart-quantity').innerHTML = counter();
+       document.querySelector('.cart-quantity').innerHTML = counterCart();
 })
 
 }
+document.addEventListener("DOMContentLoaded", Products())
 
-document.addEventListener("DOMContentLoaded", Products);
+// document.addEventListener("DOMContentLoaded", () =>{
+
+//   loadProducts().then(()=>{
+
+//     new Promise((resolve, reject)=>{
+//       console.log(products)
+//       if(products.length > 0)
+//         resolve('load products')
+//       else 
+//         reject('Can not load products')
+//     }).then((value)=>{
+//       Products()
+//       console.log(value)
+//     }).catch(error => console.error(error));
+//   })
+// });
 let clearSetTimeOut ;
 // This can stay outside the function
 document.querySelector('.js-products-grid').addEventListener('click', (event) => {
@@ -45,7 +61,7 @@ document.querySelector('.js-products-grid').addEventListener('click', (event) =>
 
     addToCart(id,quantity);
   
-       document.querySelector('.cart-quantity').innerHTML = counter();
+   document.querySelector('.cart-quantity').innerHTML =   counterCart();
   }
 });
 
