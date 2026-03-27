@@ -16,14 +16,18 @@ async function render() {
   <p style='text-align:center; color:red'>You haven't placed any orders yet.</p>
   <a href="index.html" class="continue-shopping-button button-primary">Continue Shopping</a>
   `;
-  document.querySelector('.cart-quantity').innerHTML =  counterCart();
+  document.querySelectorAll('.cart-quantity').forEach(cartQuantity => {
+    cartQuantity.innerHTML =  counterCart();
+  })
   return;
   }
 
   let products = await loadProductsFetch();
   
   function renderOrdersPage() {
-    document.querySelector('.cart-quantity').innerHTML =  counterCart();
+  document.querySelectorAll('.cart-quantity').forEach(cartQuantity => {
+    cartQuantity.innerHTML =  counterCart();
+  })
     let ordersHTML = '';
     
     orders.forEach((order) => {

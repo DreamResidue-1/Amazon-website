@@ -25,7 +25,7 @@
 }
 
 
-.amazon-header{
+.jamal-compiler-header{
 
   display: flex;
   align-items:center;
@@ -69,13 +69,13 @@ header {
 .second-row a span{
   display: inline-block;
 }
-.amazon-logo-container{
+.jamal-compiler-logo-container{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.amazon-header-left-section {
+.jamal-compiler-header-left-section {
   width: 180px;
   display: flex;
   vertical-align: bottom;
@@ -85,7 +85,7 @@ header {
 }
 
 @media (max-width: 800px) {
-  .amazon-header-left-section {
+  .jamal-compiler-header-left-section {
     width: unset;
   }
 }
@@ -104,31 +104,31 @@ header {
   border: 1px solid white;
 }
 
-.amazon-logo {
+.jamal-compiler-logo {
   width: 100px;
   margin-top: 5px;
 }
 
-.amazon-mobile-logo {
+.jamal-compiler-mobile-logo {
   display: none;
 }
 
 @media (max-width: 575px) {
-  .amazon-logo {
+  .jamal-compiler-logo {
     display: none;
   }
-  .amazon-mobile-logo {
+  .jamal-compiler-mobile-logo {
     display: block;
     height: 50px;
     margin-top: 5px;
     object-fit: contain;
   }
-  header >div:not([class = 'amazon-header']) .header-link:hover {
+  header >div:not([class = 'jamal-compiler-header']) .header-link:hover {
   border: none;
   }
 }
 
-.amazon-header-middle-section {
+.jamal-compiler-header-middle-section {
   flex: 1;
   max-width: 850px;
   margin-left: 10px;
@@ -190,10 +190,10 @@ header {
     visibility: visible;
     width: 100%;
   }
-  .amazon-header-middle-section{
+  .jamal-compiler-header-middle-section{
     margin-right: 60px;
   }
-  .amazon-header-right-section{
+  .jamal-compiler-header-right-section{
     width: 180px;
     margin-left: 0px;
   }
@@ -217,7 +217,7 @@ header {
   display: flex;
   justify-content: end;
 }
-.amazon-header-right-section {
+.jamal-compiler-header-right-section {
   margin-left:-60px;
   display: flex;
   justify-content: end;

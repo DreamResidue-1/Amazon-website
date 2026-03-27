@@ -43,9 +43,9 @@ async function Products() {
   }
   );
   
-  document.querySelector('.cart-quantity').innerHTML = counterCart();
-  
-  grid.innerHTML = '';
+   document.querySelectorAll('.cart-quantity').forEach(cartQuantity => {
+    cartQuantity.innerHTML =  counterCart();
+  })
   grid.innerHTML =  newProducts.map(element => generateHtmlProduct(element)).join("");
 
   if(grid.innerHTML === ''){
@@ -80,7 +80,9 @@ document.querySelector('.js-products-grid').addEventListener('click', (event) =>
     },2000)
     document.querySelector('.added'+id).style.visibility = 'visible'
 
-    document.querySelector('.cart-quantity').innerHTML = counterCart(); 
+    document.querySelectorAll('.cart-quantity').forEach(cartQuantity => {
+    cartQuantity.innerHTML =  counterCart();
+  })
     addToCart(id,quantity);
    }
 });

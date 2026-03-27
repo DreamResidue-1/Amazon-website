@@ -27,15 +27,15 @@
   display: flex;
   justify-content:center;
   gap:10px;
-  align-items: space-around;
+  align-items: center;
 }
 
-.amazon-logo {
+.jamal-compiler-logo {
   width: 100px;
   margin-top: 12px;
 }
 
-.amazon-mobile-logo {
+.jamal-compiler-mobile-logo {
   display: none;
 }
 
@@ -48,11 +48,11 @@
     width: auto;
   }
 
-  .amazon-logo {
+  .jamal-compiler-logo {
     display: none;
   }
 
-  .amazon-mobile-logo {
+  .jamal-compiler-mobile-logo {
     display: inline-block;
     height: 50px;
     margin-top: 5px;
@@ -106,29 +106,6 @@
   }
 }
 
-
-
-.remove-image {
-  position: relative;
-  top: 42px;
-  left: 35px;
-  background-color: #ff4d4d;
-  color: white;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: flex; /* Hidden by default, shown via JS */
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  z-index: 5;
-}
-
-.remove-image:hover {
-  background-color: #ff0000;
-}
 
 .p-image {
   position: relative;

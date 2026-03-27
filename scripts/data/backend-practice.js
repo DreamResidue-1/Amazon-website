@@ -9,5 +9,5 @@ xhr.addEventListener('load', () =>{
 
 
 
-xhr.open('GET', '../amazon.html')
+xhr.open('GET', '../jamal-compiler.html')
 xhr.send();
