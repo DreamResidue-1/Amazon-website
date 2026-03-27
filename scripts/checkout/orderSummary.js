@@ -1,5 +1,5 @@
-import * as cart from '../../data/cart.js';
-import { products , loadProductsFetch} from '../../data/products.js';
+import * as cart from '../data/cart.js';
+import { products , loadProductsFetch} from '../data/products.js';
 import { generateHtmlCartItem } from '../generateHtml/cartItem.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 

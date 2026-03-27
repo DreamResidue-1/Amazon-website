@@ -1,13 +1,16 @@
-import { orders } from '../data/orders.js';
-import { addToCart ,counterCart } from '../data/cart.js';
-import {  loadProductsFetch } from '../data/products.js';
+import { orders } from './data/orders.js';
+import { addToCart ,counterCart } from './data/cart.js';
+import {  loadProductsFetch } from './data/products.js';
 import renderOrderProducts from './generateHtml/order.js' // To get product names/images
 import { formatCurrency } from './util/money.js';
 import {searchBar,searchBtn} from "./util/searchBar.js";
+import { headerActive } from './util/header-responsive.js';
+import './image-profile.js';
+
 
 render();
 async function render() {
-  
+  headerActive();
   if (orders.length === 0) {
   document.querySelector('.js-orders-grid').innerHTML = `
   <p style='text-align:center; color:red'>You haven't placed any orders yet.</p>

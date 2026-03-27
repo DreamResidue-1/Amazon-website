@@ -1,5 +1,5 @@
-import { renderOrderSummary } from "../scripts/checkout/orderSummary.js";
-import { formatCurrency } from "../scripts/util/money.js";
+import { renderOrderSummary } from "../checkout/orderSummary.js";
+import { formatCurrency } from "../util/money.js";
 
 export class Product {
   id;

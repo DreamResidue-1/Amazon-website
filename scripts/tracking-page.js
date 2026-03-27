@@ -1,8 +1,9 @@
-import { orders } from "../data/orders.js";
-import { loadProductsFetch } from "../data/products.js";
+import { orders } from "./data/orders.js";
+import { loadProductsFetch } from "./data/products.js";
 import { generateHtmlTracking } from "./generateHtml/tracking.js";
+import { headerActive } from "./util/header-responsive.js";
 import {searchBar,searchBtn} from "./util/searchBar.js";
-
+import './image-profile.js';
 
 const url = new URL(location.href);
 const productId = url.searchParams.get('ProductId');
@@ -51,6 +52,7 @@ console.log('Delivery Date:', formattedDate);
 
 
 async function renderTrackingProducts() {
+  headerActive();
   const productCollection = await loadProductsFetch();
   const matchingProduct = productCollection.find(p=> p.id === product.productId )
   document.querySelector('.main').innerHTML = generateHtmlTracking(product, matchingProduct);

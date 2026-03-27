@@ -1,7 +1,7 @@
-import { addOrder , generateLocalOrder } from '../../data/orders.js'; // Adjust path if needed
-import * as cart from '../../data/cart.js';
-import {products,loadProductsFetch} from '../../data/products.js';
-import deliveryOptions from '../../data/deliveryOptions.js';
+import { addOrder , generateLocalOrder } from '../data/orders.js'; // Adjust path if needed
+import * as cart from '../data/cart.js';
+import {products,loadProductsFetch} from '../data/products.js';
+import deliveryOptions from '../data/deliveryOptions.js';
 import { generateHtmlPaymentSummary  } from '../generateHtml/paymentSummary.js';
 let totalCostCents = 0;
 const paymentSummary =  document.querySelector('.js-payment-summary')

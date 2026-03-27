@@ -1,11 +1,11 @@
 
 
 
-import { products } from '../../data/products.js';
+import { products } from '../data/products.js';
 import {generateHtmlDeliveryOption} from './deliveryOptions.js';
-import deliveryOptions from '../../data/deliveryOptions.js';
+import deliveryOptions from '../data/deliveryOptions.js';
 import { getDeliveryDate } from './deliveryOptions.js';
-import { loadFromStorage } from '../../data/cart.js';
+import { loadFromStorage } from '../data/cart.js';
 
 
 export function generateHtmlCartItem(cartItem, matchingItem) {

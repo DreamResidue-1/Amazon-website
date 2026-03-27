@@ -1,70 +1,177 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Amazon Project</title>
 
-    <!-- This code is needed for responsive design to work.
+<head>
+  <title>Amazon Project</title>
+
+  <!-- This code is needed for responsive design to work.
       (Responsive design = make the website look good on
       smaller screen sizes like a phone or a tablet). -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Load a font called Roboto from Google Fonts. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- this for the frofile image icon the camara -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/shared/image-profile.css">
 
-    <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="styles/shared/general.css">
-    <link rel="stylesheet" href="styles/shared/amazon-header.css">
-    <link rel="stylesheet" href="styles/pages/amazon.css">
-  </head>
-  <body>
+
+  <!-- Load a font called Roboto from Google Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Here are the CSS files for this page. -->
+  <link rel="stylesheet" href="styles/shared/general.css">
+  <link rel="stylesheet" href="styles/shared/amazon-header.css">
+  <link rel="stylesheet" href="styles/pages/amazon.css">
+</head>
+
+<body>
+  <!-- <header>
+
     <div class="amazon-header">
       <div class="amazon-header-left-section">
-        <a href="index.html" class="header-link">
-          <img class="amazon-logo"
-            src="images/jamal-compiler-logo-white.png">
-          <img class="amazon-mobile-logo"
-            src="images/jamal-complier-mobile-logo-white.png">
-        </a>
-      </div>
-
-      <div class="amazon-header-middle-section">
-        <div class="search-bar-conainer">
-          <input class="search-bar" type="text" placeholder="Search">
-          <div class="pop-up">
-            Enter a product name to search for
-          </div>
+      <div class="small-12 columns">
+        <div class="circle">
+          <img class="profile-pic"
+            src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
         </div>
+        <div class="p-image">
+          <i class="fa fa-camera upload-button"></i>
+          <input class="file-upload" type="file" accept="image/*" />
+        </div>
+      </div>
+      <div class="amazon-logo-container">
+       <a href="index.html" class="header-link">
+        <img class="amazon-logo" src="images/jamal-compiler-logo-white.png">
+        <img class="amazon-mobile-logo" src="images/jamal-complier-mobile-logo-white.png">
+      </a>
+      </div>
+    </div>
 
-        <button class="search-button">
-          <img class="search-icon" src="images/icons/search-icon.png">
-          <div class="search-button-pop-up">
-            Search
-          </div>
-        </button>
+    <div class="amazon-header-middle-section">
+      <div class="search-bar-conainer">
+        <input class="search-bar" type="text" placeholder="Search">
+        <div class="pop-up">
+          Enter a product name to search for
+        </div>
       </div>
 
-      <div class="amazon-header-right-section">
+      <button class="search-button">
+        <img class="search-icon" src="images/icons/search-icon.png">
+        <div class="search-button-pop-up">
+          Search
+        </div>
+      </button>
+    </div>
+    
+    <div class="amazon-header-right-section">
+      <div class="no-hamburger-menu">
+        
         <a class="orders-link header-link" href="orders.html">
           <span class="returns-text">Returns</span>
           <span class="orders-text">& Orders</span>
         </a>
-
+        
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
           <div class="cart-quantity">0</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
+      <div class="hamburger-menu">
+        <img src="images/icons/hamburger-menu.png" alt="">
+      </div>
     </div>
-    
-    <div class="main">
-      <div class="products-grid js-products-grid">
-        
+  </div>
+
+  <div class="second-row">
+         <a class="orders-link header-link" href="orders.html">
+          <span class="orders-text">Returns</span>
+          <span class="orders-text">& Orders</span>
+        </a>
+  </div>
+  <div class="thrid-row">
+         <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity">0</div>
+
+        </a>
+  </div>
+</header> -->
+
+<header>
+  <div class="amazon-header">
+    <div class="amazon-header-left-section">
+      <div class="small-12 columns">
+        <div class="circle">
+          <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+        </div>
+        <div class="p-image">
+          <i class="fa fa-camera upload-button"></i>
+          <input class="file-upload" type="file" accept="image/*" style="display: none;" />
+        </div>
+      </div>
+
+      <div class="amazon-logo-container">
+        <a href="index.html" class="header-link">
+          <img class="amazon-logo" src="images/jamal-compiler-logo-white.png">
+          <img class="amazon-mobile-logo" src="images/jamal-complier-mobile-logo-white.png">
+        </a>
+      </div>
     </div>
-    
-    <script type="module" src="data/cart.js"></script>
+
+    <div class="amazon-header-middle-section">
+      <div class="search-bar-conainer">
+        <input class="search-bar" type="text" placeholder="Search">
+        <div class="pop-up">Enter a product name to search for</div>
+      </div>
+      <button class="search-button">
+        <img class="search-icon" src="images/icons/search-icon.png">
+        <div class="search-button-pop-up">Search</div>
+      </button>
+    </div>
+
+    <div class="amazon-header-right-section">
+      <div class="no-hamburger-menu">
+        <a class="orders-link header-link" href="orders.html">
+          <span class="returns-text">Returns</span>
+          <span class="orders-text">& Orders</span>
+        </a>
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity">0</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>
+      <div class="hamburger-menu">
+        <img src="images/icons/hamburger-menu.png" alt="Menu" style="cursor: pointer;">
+      </div>
+    </div>
+  </div>
+   <div class="row-container">
+
+     <div class="second-row">
+       <a class="orders-link header-link" href="orders.html">
+         <span class="orders-text">Returns & Orders</span>
+        </a>
+      </div>
+      <div class="thrid-row">
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity js-cart-mobile-quantity">0</div>
+        </a>
+        <div>
+  </div>
+</header>
+
+  <div class="main">
+    <div class="products-grid js-products-grid">
+
+    </div>
+
+
     <script type="module" src="scripts/amazon.js"></script>
-  </body>
+</body>
+
 </html>

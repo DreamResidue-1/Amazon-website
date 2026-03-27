@@ -1,8 +1,11 @@
-import {counterCart } from '../data/cart.js';
-import { products, loadProductsFetch } from '../data/products.js';
+import {counterCart } from './data/cart.js';
+import { products, loadProductsFetch } from './data/products.js';
 import {generateHtmlProduct} from './generateHtml/product.js';
 import {searchBar,searchBtn} from "./util/searchBar.js";
-import { addToCart } from '../data/cart.js';
+import { addToCart } from './data/cart.js';
+import { headerActive } from './util/header-responsive.js';
+import './image-profile.js';
+
 
 const url = new URL(location.href);
 const word = url.searchParams.get('word');
@@ -13,7 +16,7 @@ console.log(word);
 
 let grid = document.querySelector('.js-products-grid');
 
-
+headerActive();
 async function Products() {
     
   let newProducts = []

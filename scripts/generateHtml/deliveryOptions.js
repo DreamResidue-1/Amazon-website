@@ -1,6 +1,6 @@
-import deliveryOptions from '../../data/deliveryOptions.js';
+import deliveryOptions from '../data/deliveryOptions.js';
 import { formatCurrency } from '../util/money.js';
-import { cart } from '../../data/cart.js';
+import { cart } from '../data/cart.js';
 /**
  * Calculates a delivery date string based on the number of days from today.
  * @param {number} daysToAdd 
