@@ -22,6 +22,8 @@ export function searchBar(){
     let value = event.target.value;
     ReusableCode(value)
   }
+  // let value = event.target.value;
+  // search(value);
 })
 
 }

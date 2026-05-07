@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+link[rel = 'shortcut icon']{
+  background-color: white;
+}
 .search-bar-conainer{
   flex:1;
   display: flex;
@@ -102,10 +105,12 @@ header {
 
 .header-link:hover {
   border: 1px solid white;
+
+
 }
 
 .jamal-compiler-logo {
-  width: 100px;
+  width: 120px;
   margin-top: 5px;
 }
 

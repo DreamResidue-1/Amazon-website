@@ -1,6 +1,8 @@
 import { renderOrderSummary } from "../checkout/orderSummary.js";
 import { formatCurrency } from "../util/money.js";
 
+
+
 export class Product {
   id;
   image;
@@ -24,7 +26,8 @@ export class Product {
     return `${formatCurrency(this.priceCents)}`
   }
   extraInfoHtml(){
-    return ''
+    
+    return ' '
   }
 }
 
@@ -50,14 +53,14 @@ class Appliance extends Product{
 
   }
   extraInfoHtml(){
-    return `<a href="${this.instractionsLink}" target="_blank">Instractions</a> 
-            <a href="${this.warrantyLink}" target="_blank">Warranty</a>`;
+    return `<a href="images/appliance-instructions.png" target="_blank">Instractions</a> 
+            <a href="images/appliance-warranty.png" target="_blank">Warranty</a>`;
     
   }
 }
 
 export async function loadProductsFetch(){
-  products = await fetch('../backend/products.json')
+  products = await fetch('../../backend/products.json')
          .then(response => response.json())
          .then(productsData => 
           productsData.map((product)=>{            

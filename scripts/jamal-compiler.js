@@ -13,7 +13,9 @@ async function Products() {
   productCollection = await loadProductsFetch();
   
   document.querySelector('.js-products-grid').innerHTML =
-  productCollection.map(element => generateHtmlProduct(element)).join("");
+  productCollection.map(element => {
+    return generateHtmlProduct(element);
+  }).join("");
   
   document.querySelectorAll('.limit-text-to-2-lines').forEach(par => {
     par.addEventListener('click', event => {

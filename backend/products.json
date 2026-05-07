@@ -53,6 +53,7 @@
       "stars": 5,
       "count": 2197
     },
+    "type":  "appliances",
     "priceCents": 1899,
     "keywords": [
       "toaster",
@@ -543,6 +544,7 @@
       "stars": 4.5,
       "count": 1211
     },
+    "type":  "appliances",
     "priceCents": 2250,
     "keywords": [
       "coffeemakers",
@@ -603,6 +605,7 @@
       "stars": 4,
       "count": 3
     },
+    "type":  "appliances",
     "priceCents": 10747,
     "keywords": [
       "food blenders",

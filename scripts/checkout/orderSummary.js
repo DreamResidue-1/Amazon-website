@@ -7,7 +7,7 @@ const orderSummary = document.querySelector('.js-order-summary');
 export async function renderOrderSummary() {
   if (cart.cart.length === 0) {
     orderSummary.innerHTML = `
-    <p style='text-align:center; color:red'>You haven't added any orders yet.</p>
+    <p style='text-align:center; color:red'>You haven't added any items yet.</p>
     <a href="index.html" class="continue-shopping-button button-primary">Continue Shopping</a>
     `;
     return;

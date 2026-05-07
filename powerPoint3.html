@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JamalCompiler Project</title>
+  <link rel="shortcut icon" href="images/jamal-compiler-mobile-logo.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amazon-navy: #232f3e;   /* Amazon Dark Blue */
+            --amazon-orange: #febd69; /* Amazon Orange */
+            --amazon-dark: #131921;   /* Amazon Deep Black */
+            --bg-light: #eaeded;      /* Amazon Page Gray */
+            --white: #ffffff;
+            --text: #0f1111;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Slide Animation */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 10%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Amazon Style Header */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--amazon-dark);
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 100;
+        }
+
+        .amazon-logo-text {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .amazon-logo-text span { color: var(--amazon-orange); }
+
+        /* Slide Content Cards */
+        .card {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 1100px;
+            border-top: 5px solid var(--amazon-orange);
+        }
+
+        h1 { font-size: 3.5rem; color: var(--amazon-navy); margin-bottom: 10px; }
+        h2 { font-size: 2.5rem; color: var(--amazon-navy); margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        
+        /* Icons */
+        .icon-circle {
+            background: var(--amazon-orange);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--amazon-dark);
+        }
+
+        /* Lists */
+        ul { list-style: none; }
+        li {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.4;
+        }
+        li::before {
+            content: "➜";
+            position: absolute;
+            left: 0;
+            color: var(--amazon-orange);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: #f3f3f3;
+            border-left: 5px solid var(--amazon-navy);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Buttons */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 200;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            background: var(--amazon-orange);
+            color: var(--amazon-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background 0.2s ease;
+        }
+        button:hover { background: #f7ca00; }
+ .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 40px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* SVG Image simulation */
+        .visual { width: 100%; max-width: 400px; height: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="amazon-logo-text">Jamal<span>Compiler</span></div>
+        <div style="margin-left: auto; color: white; font-size: 0.9rem;">Final Year Project | E-Commerce</div>
+    </div>
+
+    <div class="footer" id="slide-info">Slide 1 of 9</div>
+
+    <div class="controls">
+        <button onclick="move(-1)">PREVIOUS</button>
+        <button onclick="move(1)">NEXT</button>
+    </div>
+
+    <!-- SLIDE 1: WELCOME -->
+    <div class="slide active">
+        <div class="card" style="text-align: center;">
+            <p style="color: var(--amazon-orange); font-weight: bold; letter-spacing: 3px;">PRESENTATION</p>
+            <h1>Building a High-Performance
+E-Commerce Platform</h1>
+            <p style="font-size: 1.5rem; color: #555;">A Fully Responsive Online Shopping Platform</p>
+            <div style="margin-top: 50px; display: inline-block; text-align: left; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <strong>Developed by:</strong> Ghanem <br>
+                <strong>Major:</strong> IT <br>
+                <strong>Supervised by: </strong> Alaa Brihi
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: THE GOAL -->
+    <div class="slide">
+        <div class="card">
+            <h2><div class="icon-circle">01</div>Project Objective</h2>
+            <ul>
+                <li>Build a website that looks and feels like <strong>Amazon</strong>.</li>
+                <li>Make it 100% <strong>Responsive</strong> (Works on Mobile and Desktop).</li>
+                <li>Use clean code to handle products and prices.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: TECH STACK -->
+    <div class="slide">
+        <div class="card">
+            <h2><div class="icon-circle">02</div>The Tools I Used</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px;">
+                <div style="text-align: center; border: 1px solid #ddd; padding: 20px;">
+                    <h3 style="color: var(--amazon-orange);">HTML5</h3>
+                    <p>To build the skeleton.</p>
+                </div>
+                <div style="text-align: center; border: 1px solid #ddd; padding: 20px;">
+                    <h3 style="color: var(--amazon-orange);">CSS3</h3>
+                    <p>For colors and layout.</p>
+                </div>
+                <div style="text-align: center; border: 1px solid #ddd; padding: 20px;">
+                    <h3 style="color: var(--amazon-orange);">JavaScript</h3>
+                    <p>For the brain of the site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: CHALLENGES (HARD PART) -->
+    <div class="slide">
+        <div class="card">
+            <h2 style="color: #c45500;"><div class="icon-circle" style="background:#c45500; color:white;">!</div>Technical Challenges</h2>
+            <p style="margin-bottom: 20px; font-weight: bold;">I faced 3 main difficulties during this project:</p>
+            <ul>
+                <li><strong>Shipping Logic:</strong> Writing code to calculate different shipping dates and prices for each order.</li>
+                <li><strong>Search Issues:</strong> Making the search bar find the right products quickly and correctly.</li>
+                <li><strong>Data Management:</strong> Keeping track of customer orders so they don't get lost when the page reloads.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: SOLUTIONS (HOW I FIXED IT) -->
+    <div class="slide">
+        <div class="card">
+ <h2><div class="icon-circle">03</div>How I Solved Them</h2>
+            <ul>
+                <li><strong>For Shipping:</strong> I used a "Date Library" to automate delivery time calculations.</li>
+                <li><strong>For Search:</strong> I used "Array Filtering" to match user text with our product list.</li>
+                <li><strong>For Data:</strong> I used <strong>LocalStorage</strong> to save the order information safely.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: RESPONSIVE DESIGN -->
+    <div class="slide">
+        <div class="card">
+            <div style="display: flex; gap: 40px; align-items: center;">
+                <div style="flex: 1;">
+                    <h2><div class="icon-circle">04</div>Responsive Design</h2>
+                    <ul>
+                        <li>The site adapts to any screen size.</li>
+                        <li>Buttons and menus are easy to click on <strong>Mobile</strong>.</li>
+                        <li>High-quality images for all devices.</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; text-align: center;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width: 200px; color: var(--amazon-navy);">
+                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                        <rect x="18" y="10" width="4" height="6" rx="1" />
+                        <line x1="8" y1="21" x2="16" y2="21" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: CODE EXAMPLE (SIMPLE) -->
+    <div class="slide">
+        <div class="card">
+            <h2><div class="icon-circle">05</div>Smart Coding</h2>
+            <p>I wrote clean, basic code to handle the shopping cart:</p>
+            <div style="background: #232f3e; color: #febd69; padding: 30px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 1.2rem; margin-top: 20px;">
+                // Add Product to Cart <br>
+                function addToCart(productID) { <br>
+                &nbsp;&nbsp;cart.push(productID); <br>
+                &nbsp;&nbsp;updateOrderTotal(); <br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: DEMO TIME -->
+    <div class="slide">
+        <div class="card" style="text-align: center; border: 10px solid var(--amazon-orange);">
+            <h1 style="font-size: 5rem;">Live Demo</h1>
+            <p style="font-size: 1.5rem; margin-top: 20px;">Let's see the website in action!</p>
+            <div style="margin-top: 40px;">
+                <button style="font-size: 1.5rem; padding: 20px 50px;" onclick="location.href='index.html'">OPEN WEBSITE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: THANK YOU -->
+    <div class="slide">
+        <div class="card" style="text-align: center;">
+            <div class="icon-circle" style="width: 100px; height: 100px; margin: 0 auto 30px; font-size: 3rem;">✓</div>
+            <h1>Thank You!</h1>
+            <p style="font-size: 1.5rem; color: #555;">I am ready for your questions.</p>
+            <div style="margin-top: 40px; color: var(--amazon-orange); font-weight: bold;">{ JamalCompiler ; }</div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideInfo = document.getElementById('slide-info');
+
+        function move(step) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide += step;
+            
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            
+            slides[currentSlide].classList.add('active');
+            slideInfo.innerText = `Slide ${currentSlide + 1} of ${slides.length}`;
+        }
+      document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') move(1);
+            if (e.key === 'ArrowLeft') move(-1);
+        });
+    </script>
+</body>
+</html>  
+        
+
+          
